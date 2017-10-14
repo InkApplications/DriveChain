@@ -1,4 +1,4 @@
 dependencies {
-    compile "com.google.dagger:dagger:2.12"
+    provided "com.google.dagger:dagger:2.12"
     kapt 'com.google.dagger:dagger-compiler:2.12'
 }
