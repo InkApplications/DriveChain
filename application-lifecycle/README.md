@@ -6,6 +6,14 @@ This component provides a missing interface for Android's Application lifecycle 
 Installation
 ------------
 
+If you haven't already, add JitPack to your gradle repositories in your `build.gradle` file:
+
+    repositories {
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+
 Add the dependency to your `build.gradle` file
 
     compile 'com.github.InkApplications.DriveChain:application-lifecycle:1.+'
