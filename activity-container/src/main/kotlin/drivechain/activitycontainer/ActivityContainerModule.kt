@@ -4,7 +4,9 @@ import android.arch.lifecycle.LifecycleObserver
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
+import javax.inject.Singleton
 
 @Module class ActivityContainerModule {
-    @Provides @IntoSet fun activityContainer(): LifecycleObserver = ActivityContainer()
+    @Provides @Singleton fun activityContainer() = ActivityContainer()
+    @Provides @IntoSet fun lifecycleObserver(container: ActivityContainer): LifecycleObserver = container
 }
