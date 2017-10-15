@@ -29,12 +29,15 @@ Requirements
 ### Optional, but recommended.
  - **Dagger 2** – This library is designed to be used with [Dagger 2] Multi-mapping. You could use
    the interfaces without it, but it wouldn't be as convenient.
+ - DriveChain [Lifecycle] – If you are using the DriveChain
+   Lifecycle component, this module will automatically keep track of the current activity.
+   Otherwise, you will have to update it manually.
 
 Usage
 -----
 
-If you are using Dagger 2, Add the module to your application component to
-automatically have the
+If you are using Dagger 2 and [Lifecycle], Add the module to your application component to
+automatically have the current activity updated
 
 ```kotlin
 @Singleton
@@ -65,3 +68,5 @@ fun onMessageReceived(message: String) {
     }
 }
 ```
+
+[Lifecycle]: ../drivechain-lifecycle/README.md
