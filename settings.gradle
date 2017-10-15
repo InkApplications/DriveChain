@@ -1,2 +1,3 @@
 include 'android-services'
-include 'application-lifecycle'
+include 'lifecycle'
+include 'logger'

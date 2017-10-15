@@ -1,4 +1,4 @@
-package drivechain.applicationlifecycle
+package drivechain.lifecycle.application
 
 import android.app.Application
 

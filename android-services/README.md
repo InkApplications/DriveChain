@@ -17,7 +17,7 @@ If you haven't already, add JitPack to your gradle repositories in your `build.g
 
 Add the dependency to your `build.gradle` file
 
-    compile 'com.github.InkApplications.DriveChain:application-lifecycle:1.+'
+    compile 'com.github.InkApplications.DriveChain:android-services:1.+'
 
 Requirements
 ------------

@@ -1,7 +1,9 @@
-DriveChain Application Lifecycle
-================================
+DriveChain Lifecycle
+====================
 
-This component provides a missing interface for Android's Application lifecycle events.
+This component provides a missing interface for Android's Application
+lifecycle events and tools to more easily hook into Android's activity
+lifecycle.
 
 Installation
 ------------
@@ -16,7 +18,7 @@ If you haven't already, add JitPack to your gradle repositories in your `build.g
 
 Add the dependency to your `build.gradle` file
 
-    compile 'com.github.InkApplications.DriveChain:application-lifecycle:1.+'
+    compile 'com.github.InkApplications.DriveChain:lifecycle:1.+'
 
 Requirements
 ------------
@@ -32,12 +34,27 @@ Requirements
 Usage
 -----
 
+### Add the Lifecycle Module
+
+If you are using Dagger 2, add the Lifecycle module to your Application.
+Component:
+
+```kotlin
+@Singleton
+@Component(modules = arrayOf(
+    LifecycleModule::class
+))
+interface ApplicationComponent {
+  // ...
+}
+```
+
 ### Modify your Application Class
 
 Since android does not have built in callbacks for the Application lifecycle, you will need to
 modify your application to invoke the interface directly.
 
-#### Inject Subscribers
+#### Inject Application Subscribers
 
 Obtain your set of application subscribers. If you are using Dagger 2, you can inject the collection
 as you would any other service:
@@ -48,7 +65,7 @@ class MyApplication: Application() {
 }
 ```
 
-#### Invoke Callbacks
+#### Invoke Application Callbacks
 
 Next, make sure each of the lifecycle steps are passed along to the callbacks.
 
@@ -78,7 +95,7 @@ class MyApplication: Application() {
 }
 ```
 
-#### Create Lifecycle Subscribers
+#### Create Application Lifecycle Subscribers
 
 Now, you can create a de-coupled lifecycle subscriber just by adding it to the set, and without
 cluttering your Application class. If you're using Dagger 2, this is as easy as annotating your
@@ -97,5 +114,23 @@ And add it to your set using Dagger's Multi-binding:
 ```kotlin
 @Module class WidgetModule {
     @Provides @IntoSet fun widget(): ApplicationLifecycleSubscriber = WidgetInitializer()
+}
+```
+
+### Activity Lifecycle
+
+Android Architecture components have already brought a great way to hook into
+the Activity lifecycle. You can use them in the same manner as the Application
+components
+
+```kotlin
+
+class MyActivity: AppCompatActivity {
+    @Inject lateinit var lifecycleComponents: Set<@JvmSuppressWildcards LifecycleObserver>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        registry.addObservers(lifecycleComponents)
+    }
 }
 ```
