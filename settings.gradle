@@ -1,3 +1,5 @@
 include 'android-services'
 include 'lifecycle'
 include 'logger'
+include 'stetho-bridge'
+include 'stetho-bridge-noop'
