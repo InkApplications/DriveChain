@@ -1,9 +1,8 @@
 
 dependencies {
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    provided 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    compile 'com.facebook.fresco:fresco:1.5.0'
+    compile "com.facebook.fresco:imagepipeline-okhttp3:1.5.0"
     compile "com.google.dagger:dagger:2.12"
     kapt 'com.google.dagger:dagger-compiler:2.12'
     compile project(":lifecycle")
-    compile project(":okhttp-bridge")
 }
