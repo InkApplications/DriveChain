@@ -3,6 +3,7 @@ package drivechain.activitycontainer
 import android.app.Activity
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.OnLifecycleEvent
 import java.lang.ref.WeakReference
 import kotlin.reflect.KClass
@@ -20,13 +21,17 @@ class ActivityContainer: LifecycleObserver {
     val activity get() = recentActivity?.get()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    fun onActivityPaused(activity: Activity) {
-        recentActivity = null
+    fun onActivityPaused(owner: LifecycleOwner) {
+        when (owner) {
+            is Activity -> recentActivity = null
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun onActivityResumed(activity: Activity) {
-        recentActivity = WeakReference(activity)
+    fun onActivityResumed(owner: LifecycleOwner) {
+        when (owner) {
+            is Activity -> recentActivity = WeakReference(owner)
+        }
     }
 
     /**
