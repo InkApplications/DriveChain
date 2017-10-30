@@ -15,16 +15,16 @@ class ConsoleLogger(
     override fun debug(cause: Throwable, message: String, vararg args: Any) { Log.d(this.tag, String.format(message, *args), cause) }
 
     override fun error(message: String, vararg args: Any) { Log.e(this.tag, String.format(message, *args)) }
-    override fun error(cause: Throwable, message: String, vararg args: Any) { Log.e(this.tag, message, cause) }
+    override fun error(cause: Throwable, message: String, vararg args: Any) { Log.e(this.tag, String.format(message, *args), cause) }
 
     override fun info(message: String, vararg args: Any) { Log.i(this.tag, String.format(message, *args)) }
-    override fun info(cause: Throwable, message: String, vararg args: Any) { Log.i(this.tag, message, cause) }
+    override fun info(cause: Throwable, message: String, vararg args: Any) { Log.i(this.tag, String.format(message, *args), cause) }
 
     override fun trace(message: String, vararg args: Any) { Log.v(this.tag, String.format(message, *args)) }
-    override fun trace(cause: Throwable, message: String, vararg args: Any) { Log.v(this.tag, message, cause) }
+    override fun trace(cause: Throwable, message: String, vararg args: Any) { Log.v(this.tag, String.format(message, *args), cause) }
 
     override fun warn(message: String, vararg args: Any) { Log.w(this.tag, String.format(message, *args)) }
-    override fun warn(cause: Throwable, message: String, vararg args: Any) { Log.w(this.tag, message, cause) }
+    override fun warn(cause: Throwable, message: String, vararg args: Any) { Log.w(this.tag, String.format(message, *args), cause) }
 
     /*
         The Following code is from Jake Wharton's Timber library,
