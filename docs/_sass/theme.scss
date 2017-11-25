@@ -1,0 +1,99 @@
+
+@import "colors";
+
+body
+{
+    font-family: "Lato", sans-serif;
+    color: $foreground;
+}
+.primary-header
+{
+    background-color: $primary;
+    color: $foreground-inverse;
+    height: 141px;
+
+    @media(max-width: 600px) {
+        h1 > small {
+            display: none
+        }
+    }
+
+    nav ul {
+        list-style: none;
+
+        li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    a {
+        margin: 0 8px;
+        padding: 0 8px;
+        line-height: 50px;
+        display: inline-block;
+        font-weight: 300;
+    }
+    a:hover {
+        background-color: darken($primary, 3%);
+    }
+    a,
+    a:hover,
+    a:active,
+    a:focus {
+        color: $foreground-inverse;
+    }
+}
+
+body section.container {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.primary-header h1
+{
+    font-weight: 100;
+    font-size: 56px;
+    margin: 0;
+    padding: 16px 0 8px 0;
+}
+
+.primary-header h1 > small
+{
+    font-weight: 100;
+    font-size: 22px;
+}
+
+.primary-footer
+{
+    margin-top: 80px;
+    padding: 56px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 100;
+    line-height: 32px;
+}
+
+.icon-md
+{
+    height: 32px;
+    padding-bottom: 3px;
+    vertical-align: middle;
+}
+
+a.anchor-link:hover,
+a.anchor-link:hover
+{
+    opacity: 1;
+}
+
+h3
+{
+    font-size: 20px;
+}
+
+p
+{
+    padding-left: 8px;
+    padding-right: 8px;
+}

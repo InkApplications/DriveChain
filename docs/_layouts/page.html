@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+        <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+      
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+        <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+      
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700' type='text/css'>
+        <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+        <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    </head>
+    <body>
+        <div class="primary-header">
+            <header class="container">
+                <h1>
+                    {{ site.title }}
+                    <small>{{ site.subtitle }}</small>
+                </h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{{ site.baseurl }}/">Introduction</a>
+                        </li>
+                        <li>
+                            <a href="{{ site.baseurl }}/start">Getting Started</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <section class="container">
+            {{ content }}
+        </section>
+
+        <footer class="container primary-footer">
+            <img src="//inkapplications.com/code-black.svg" class="icon-md" />
+            Ink Applications
+        </footer>
+    </body>
+</html>
