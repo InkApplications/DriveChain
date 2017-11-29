@@ -7,4 +7,4 @@ initialize and configure [Fresco] using [OkHttp] for network calls.
 [Fresco]: http://frescolib.org/
 [OkHttp]: http://square.github.io/okhttp/
 
-[Read the Documentation](https://drivechain.inkapplications.com/fresco-bridge)
+[Read the Documentation](http://drivechain.inkapplications.com/fresco-bridge)
