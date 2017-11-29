@@ -7,24 +7,76 @@ private const val MAX_TAG_LENGTH = 23
 private const val CALL_STACK_INDEX = 2
 private val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
 
+/**
+ * Log messages to the Android Console.
+ *
+ * @param name A name to log as a tag when logging. If none is provided,
+ *        this will attempt to use the class name of the source of the
+ *        log. (optional)
+ * @param loggerOffset The number of classes to traverse upwards when getting
+ *        the name of the class that logged the message. This is used when
+ *        nesting loggers together, so that the source of the log can be
+ *        correctly identified. By default it is set to 2, expecting this to
+ *        be used in a `LoggerCollection` (optional)
+ * @param errorEnabled Whether Error Messages should be logged (default: true)
+ * @param warnEnabled Whether Warning Messages should be logged (default: true)
+ * @param infoEnabled Whether Info Messages should be logged (default: true)
+ * @param debugEnabled Whether Debug Messages should be logged (default: true)
+ * @param traceEnabled Whether Trace Messages should be logged (default: true)
+ */
 class ConsoleLogger(
     private val name: String? = null,
-    private val loggerOffset: Int = 2
+    private val loggerOffset: Int = 2,
+    private val errorEnabled: Boolean = true,
+    private val warnEnabled: Boolean = true,
+    private val infoEnabled: Boolean = true,
+    private val debugEnabled: Boolean = true,
+    private val traceEnabled: Boolean = true
 ): Logger {
-    override fun debug(message: String, vararg args: Any?) { Log.d(this.tag, String.format(message, *args)) }
-    override fun debug(cause: Throwable, message: String, vararg args: Any?) { Log.d(this.tag, String.format(message, *args), cause) }
+    override fun debug(message: String, vararg args: Any?) {
+        if (!debugEnabled) return
+        Log.d(this.tag, String.format(message, *args))
+    }
+    override fun debug(cause: Throwable, message: String, vararg args: Any?) {
+        if (!debugEnabled) return
+        Log.d(this.tag, String.format(message, *args), cause)
+    }
 
-    override fun error(message: String, vararg args: Any?) { Log.e(this.tag, String.format(message, *args)) }
-    override fun error(cause: Throwable, message: String, vararg args: Any?) { Log.e(this.tag, String.format(message, *args), cause) }
+    override fun error(message: String, vararg args: Any?) {
+        if (!errorEnabled) return
+        Log.e(this.tag, String.format(message, *args))
+    }
+    override fun error(cause: Throwable, message: String, vararg args: Any?) {
+        if (!errorEnabled) return
+        Log.e(this.tag, String.format(message, *args), cause)
+    }
 
-    override fun info(message: String, vararg args: Any?) { Log.i(this.tag, String.format(message, *args)) }
-    override fun info(cause: Throwable, message: String, vararg args: Any?) { Log.i(this.tag, String.format(message, *args), cause) }
+    override fun info(message: String, vararg args: Any?) {
+        if (!infoEnabled) return
+        Log.i(this.tag, String.format(message, *args))
+    }
+    override fun info(cause: Throwable, message: String, vararg args: Any?) {
+        if (!infoEnabled) return
+        Log.i(this.tag, String.format(message, *args), cause)
+    }
 
-    override fun trace(message: String, vararg args: Any?) { Log.v(this.tag, String.format(message, *args)) }
-    override fun trace(cause: Throwable, message: String, vararg args: Any?) { Log.v(this.tag, String.format(message, *args), cause) }
+    override fun trace(message: String, vararg args: Any?) {
+        if (!traceEnabled) return
+        Log.v(this.tag, String.format(message, *args))
+    }
+    override fun trace(cause: Throwable, message: String, vararg args: Any?) {
+        if (!traceEnabled) return
+        Log.v(this.tag, String.format(message, *args), cause)
+    }
 
-    override fun warn(message: String, vararg args: Any?) { Log.w(this.tag, String.format(message, *args)) }
-    override fun warn(cause: Throwable, message: String, vararg args: Any?) { Log.w(this.tag, String.format(message, *args), cause) }
+    override fun warn(message: String, vararg args: Any?) {
+        if (!warnEnabled) return
+        Log.w(this.tag, String.format(message, *args))
+    }
+    override fun warn(cause: Throwable, message: String, vararg args: Any?) {
+        if (!warnEnabled) return
+        Log.w(this.tag, String.format(message, *args), cause)
+    }
 
     /*
         The Following code is from Jake Wharton's Timber library,

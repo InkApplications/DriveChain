@@ -21,6 +21,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Android Architecture Components, and many common libraries maing development
   faster and with less boilerplate than ever.
 baseurl: "" # the subpath of your site, e.g. /blog
+github: https://github.com/InkApplications/DriveChain
 url: "drivechain.inkapplications.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
