@@ -16,7 +16,7 @@ Installation
 Add the dependency to your `build.gradle` file
 
 ```gradle
-    compile 'com.github.InkApplications.DriveChain:lifecycle:1.+'
+    compile "com.github.InkApplications.DriveChain:lifecycle:1.+"
 ```
 
 Add the Lifecycle module to your Application Component:

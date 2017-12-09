@@ -14,7 +14,7 @@ Installation
 
 Add the dependency to your `build.gradle` file
 
-    compile 'com.github.InkApplications.DriveChain:android-services:1.+'
+    compile "com.github.InkApplications.DriveChain:android-services:1.+"
 
 Any of the Modules can be included in your application's Dagger component:
 

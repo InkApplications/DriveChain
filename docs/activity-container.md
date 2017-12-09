@@ -19,7 +19,7 @@ Installation
 Add the dependency to your `build.gradle` file
 
 ```gradle
-    compile 'com.github.InkApplications.DriveChain:activity-container:1.+'
+    compile "com.github.InkApplications.DriveChain:activity-container:1.+"
 ```
     
 Add the following module to your application component:

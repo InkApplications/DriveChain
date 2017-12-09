@@ -15,7 +15,7 @@ Installation
 
 Add the dependency to your `build.gradle` file
 
-    compile "com.github.InkApplications.DriveChain:app-config:1.+'
+    compile "com.github.InkApplications.DriveChain:app-config:1.+"
 
 Usage
 -----
