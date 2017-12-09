@@ -49,35 +49,36 @@ interface ApplicationComponent { /* ... */ }
 ------------------------
 
 Android does not provide a built-in way of hookin into the Application's 
-lifecycle, but DriveChain does. However, this means you'll have to invoke 
-Drivechain's lifecycle callbacks from your Application class.
+lifecycle, but DriveChain does. This means you'll have to invoke 
+Drivechain's kernel at each of the lifecycle events.
 
-DriveChain's components rely on these events to function, this step is required.
+DriveChain's components rely on these events to function, this step is required
+for each method.
 
 ```kotlin
 class MyApplication: Application() {
-    @Inject lateinit var lifecycleSubscribers: Set<@JvmSuppressWildcards ApplicationLifecycleSubscriber>
+    @Inject lateinit var appKernel: AppKernel
 
     override fun onCreate() {
         super.onCreate()
 
         DaggerApplicationComponent().create().inject(this) // Inject the application with Dagger before calling Lifecycles
-        lifecycleSubscribers.onCreate(this)
+        appKernel.onCreate(this)
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        lifecycleSubscribers.onTerminate(this)
+        appKernel.onTerminate(this)
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        lifecycleSubscribers.onLowMemory(this)
+        appKernel.onLowMemory(this)
     }
 
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        lifecycleSubscribers.onTrimMemory(this, level)
+        appKernel.onTrimMemory(this, level)
     }
 }
 ```
@@ -85,7 +86,7 @@ class MyApplication: Application() {
 3) Add Activity & Fragment Hooks
 --------------------------------
 
-DriveChain uses Android's Architecture components to hook into indicidual
+DriveChain uses Android's Architecture components to hook into individual
 screen lifecycles.
 
 If you are using a base activity/fragment, it's recommended that this be 
@@ -93,12 +94,12 @@ added in there:
 
 ```kotlin
 class BaseActivity: AppCompatActivity() {
-    @Inject lateinit var lifecycleComponents: Set<@JvmSuppressWildcards LifecycleObserver>
+    @Inject lateinit var appKernel: AppKernel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         component.inject(this) // Dagger Injections must run before adding observers.
-        lifecycle.addObservers(lifecycleComponents)
+        appKernel.bindLifecycle(lifecycle)
     }
 }
 ```
@@ -107,13 +108,13 @@ Or for a Fragment:
 
 ```kotlin
 class BaseFragment: AppCompatActivity() {
-    @Inject lateinit var lifecycleComponents: Set<@JvmSuppressWildcards LifecycleObserver>
+    @Inject lateinit var appKernel: AppKernel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         component.inject(this)  // Dagger Injections must run before adding observers.
-        lifecycle.addObservers(lifecycleObservers)
+        appKernel.bindLifecycle(lifecycle)
     }
 }
 ```
