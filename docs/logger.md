@@ -30,7 +30,7 @@ Installation
 Add the dependency to your `build.gradle` file
 
 ```gradle
-    compile 'com.github.InkApplications.DriveChain:logger:1.+'
+    compile "com.github.InkApplications.DriveChain:logger:1.+"
 ```
 
 Add the Logger Module to your Application Component.

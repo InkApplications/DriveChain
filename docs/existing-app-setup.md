@@ -32,7 +32,7 @@ Add DriveChain as a dependency to your `build.gradle` file
 dependencies {
     compile "com.github.InkApplications.DriveChain:lifecycle:1.+" // Replace with exact version
     compile "com.github.InkApplications.DriveChain:app-config:1.+" // Replace with exact version
-    compile 'com.github.InkApplications.DriveChain:logger:1.+' // Replace with exact version
+    compile "com.github.InkApplications.DriveChain:logger:1.+" // Replace with exact version
 }
 ```
 Add the modules to your Application component:
