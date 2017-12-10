@@ -35,14 +35,13 @@ interface ApplicationComponent {
 Since android does not have built in callbacks for the Application lifecycle, you will need to
 modify your application to invoke the interface directly.
 
-#### Inject Application Subscribers
+#### Inject AppKernel
 
-Obtain your set of application subscribers. With Dagger 2, you can inject the collection
-as you would any other service:
+DriveChain's AppKernel manages dispatching your lifecycle events easily.
 
 ```kotlin
 class MyApplication: Application() {
-    @Inject lateinit var lifecycleSubscribers: Set<@JvmSuppressWildcards ApplicationLifecycleSubscriber>
+    @Inject lateinit var appKernel: AppKernel
 }
 ```
 
@@ -52,26 +51,26 @@ Next, make sure each of the lifecycle steps are passed along to the callbacks.
 
 ```kotlin
 class MyApplication: Application() {
-    @Inject lateinit var lifecycleSubscribers: Set<@JvmSuppressWildcards ApplicationLifecycleSubscriber>
+    @Inject lateinit var appKernel: AppKernel
 
     override fun onCreate() {
         super.onCreate()
-        lifecycleSubscribers.onCreate(this)
+        appKernel.onCreate(this)
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        lifecycleSubscribers.onTerminate(this)
+        appKernel.onTerminate(this)
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        lifecycleSubscribers.onLowMemory(this)
+        appKernel.onLowMemory(this)
     }
 
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        lifecycleSubscribers.onTrimMemory(this, level)
+        appKernel.onTrimMemory(this, level)
     }
 }
 ```
@@ -98,6 +97,36 @@ And add it to your set using Dagger's Multi-binding:
 }
 ```
 
+#### Lifecycle Voters
+
+In rare cases, some libraries need to be able to interrupt the initialization
+of your application libraries. This typically occurs if the library needs to
+launch its own packaged activity without your application class logic. 
+Lifecycle voters are invoked before the lifecycle subscribers, and have the
+ability to stop the normal lifecycle subscribers from being invoked.
+
+You create a Lifecycle Voter similar to a Lifecycle Subscriber, however
+each method will return a Boolean. Returning `true` will proceed as normal,
+but returning `false` will prevent *all* lifecycle subscribers from being 
+invoked, stopping your application initialization.
+
+```kotlin
+class WidgetVoter: LifecycleVoter {
+    override fun onCreate(application: Application) = if (someCondition) true else false
+    override fun onLowMemory(application: Application) = true
+    override fun onTrimMemory(application: Application, level: Int) = true
+    override fun onTerminate(application: Application) = true
+}
+```
+
+And add it to your set using Dagger's Multi-binding:
+
+```kotlin
+@Module class WidgetModule {
+    @Provides @IntoSet fun widget(): LifecycleVoter = WidgetVoter()
+}
+```
+
 ### Activity Lifecycle
 
 Android Architecture components have already brought a great way to hook into
@@ -106,11 +135,11 @@ components
 
 ```kotlin
 class MyActivity: AppCompatActivity {
-    @Inject lateinit var lifecycleComponents: Set<@JvmSuppressWildcards LifecycleObserver>
+    @Inject lateinit var appKernel: AppKernel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        registry.addObservers(lifecycleComponents)
+        appKernel.bindLifecycle(lifecycle)
     }
 }
 ```
