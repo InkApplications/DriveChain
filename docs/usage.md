@@ -45,3 +45,4 @@ a bridge for DriveChain, the ones directly supported by this project include:
 [Fresco Bridge]:/fresco-bridge
 [OkHTTP Bridge]:/okhttp-bridge
 [Stetho Bridge]:/stetho-bridge
+[LeakCanary Bridge]:/leakcanary-bridge
