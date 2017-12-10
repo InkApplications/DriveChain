@@ -40,6 +40,7 @@ a bridge for DriveChain, the ones directly supported by this project include:
  - [Fresco Bridge]
  - [OkHTTP Bridge]
  - [Stetho Bridge]
+ - [LeakCanary Bridge]
 
 [Fresco Bridge]:/fresco-bridge
 [OkHTTP Bridge]:/okhttp-bridge

@@ -16,6 +16,7 @@ framework.
  - Add Lifecycle Voters to give libraries an automatic hook that can stop the 
    application initialization procedure. This is ueseful for bridges to 
    libraries with external application code such as LeakCanary 
+ - Add a bridge for LeakCanary
 
 1.0.1
 -----
