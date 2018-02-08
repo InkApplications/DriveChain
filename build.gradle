@@ -4,15 +4,16 @@ allprojects {
 }
 
 buildscript {
-    ext.kotlin_version = '1.1.2-3'
+    apply from: "$rootDir/dependencies.gradle"
+
     repositories {
         maven { url 'https://maven.google.com' }
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath "com.android.tools.build:gradle:$gradleAndroidPluginVersion"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
 
@@ -21,6 +22,8 @@ subprojects {
     apply plugin: 'com.android.library'
     apply plugin: 'kotlin-android'
     apply plugin: 'kotlin-kapt'
+
+    apply from: "$rootDir/dependencies.gradle"
 
     android {
         compileSdkVersion 26
@@ -45,7 +48,7 @@ subprojects {
     }
 
     dependencies {
-        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         compile "com.android.support:appcompat-v7:26.1.0"
     }
 }
