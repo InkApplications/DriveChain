@@ -1,3 +1,4 @@
+include ':joda_bridge'
 include 'android-services'
 include 'activity-container'
 include 'lifecycle'
