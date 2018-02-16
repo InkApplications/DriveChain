@@ -23,21 +23,34 @@ Any of the Modules can be included in your application's Dagger component:
     interface MyApplicationComponent {}
 ```
 
-This will require the module to be passed in upon creation of the component:
+Add your application to the graph by adding a builder with a `@BindsInstance` to your component:
 
 ```kotlin
-    DaggerMyApplicationComponent.builder()
-            .androidApplicationModule(AndroidApplicationModule(application))
-            .build()
+    @Component(modules = arrayOf(AndroidApplicationModule::class))
+    interface MyApplicationComponent {
+        @Component.Builder interface Builder {
+            @BindsInstance fun application(app: Application): AppComponent.Builder
+            fun build(): AppComponent
+        }
+    }
 ```
 
-If the module requires the activity, it must be marked as an `@ActivityScope`
-component:
+Then build the component in your `Application` class:
 
 ```kotlin
-    @ActivityScope
-    @Component(modules = arrayOf(AndroidCompatActivityModule::class))
-    interface MyActivityComponent {}
+    DaggerAppComponent
+        .builder()
+        .application(this)
+        .build()
+        .inject(this)
+```
+
+If the module requires the activity, it must be marked as an `@ActivityScope`:
+
+```kotlin
+    @Module abstract class ActivityBuilderModule {
+        @ActivityScope @ContributesAndroidInjector(modules = [AndroidCompatActivityModule::class]) abstract fun myActivity() : MyActivity
+    }
 ```
 
 Available Modules

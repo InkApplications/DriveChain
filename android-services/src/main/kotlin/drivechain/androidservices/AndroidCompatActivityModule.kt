@@ -14,14 +14,13 @@ import dagger.Provides
  * These services will only be available to an activity scoped component, as they require the
  * activity class to be created.
  */
-@Module class AndroidCompatActivityModule(private val activity: AppCompatActivity) {
-    @Provides @ActivityScope fun compatActivity() = activity
-    @Provides @ActivityScope fun activity(): Activity = activity
-    @Provides @ActivityScope fun supportActionBar() = activity.supportActionBar
-    @Provides @ActivityScope fun supportFragmentManager() = activity.supportFragmentManager
-    @Provides @ActivityScope fun layoutInflater() = activity.layoutInflater
-    @Provides @ActivityScope fun menuInflater() = activity.menuInflater
-    @Provides @ActivityScope fun windowManager() = activity.windowManager
-    @Provides @ActivityScope fun lifecycle() = activity.lifecycle
-    @Provides @ActivityScope fun supportLoaderManager() = activity.supportLoaderManager
+@Module class AndroidCompatActivityModule {
+    @Provides @ActivityScope fun compatActivity(activity: AppCompatActivity) : AppCompatActivity = activity
+    @Provides @ActivityScope fun supportActionBar(activity: AppCompatActivity) = activity.supportActionBar
+    @Provides @ActivityScope fun supportFragmentManager(activity: AppCompatActivity) = activity.supportFragmentManager
+    @Provides @ActivityScope fun layoutInflater(activity: AppCompatActivity) = activity.layoutInflater
+    @Provides @ActivityScope fun menuInflater(activity: AppCompatActivity) = activity.menuInflater
+    @Provides @ActivityScope fun windowManager(activity: AppCompatActivity) = activity.windowManager
+    @Provides @ActivityScope fun lifecycle(activity: AppCompatActivity) = activity.lifecycle
+    @Provides @ActivityScope fun supportLoaderManager(activity: AppCompatActivity) = activity.supportLoaderManager
 }
