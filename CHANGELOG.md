@@ -1,6 +1,14 @@
 DriveChain Changelog
 ====================
 
+1.3.0
+-----
+
+Android Services Module compatible with AndroidInjectors
+
+- added a module with the same functionality as AndroidServices, updated to work with the 
+AndroidInjectors in Dagger 2.10+
+
 1.2.0
 -----
 
