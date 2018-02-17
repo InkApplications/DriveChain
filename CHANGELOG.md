@@ -1,6 +1,22 @@
 DriveChain Changelog
 ====================
 
+1.2.0
+-----
+
+Dagger Update and new Joda Bridge library.
+
+ - Update Dagger library to 2.14.1 – This allows user to use the latest Dagger
+   version, since Dagger included a breaking change in its factories.
+ - Add a Joda Time bridge to automatically initialize Joda time for Android.
+
+1.1.1
+-----
+
+Critical bugfix related to Stetho bridge and OkHttp bridge interaction.
+
+ - Fix for stetho runtime crash when used with okhttp
+
 1.1.0
 -----
 
