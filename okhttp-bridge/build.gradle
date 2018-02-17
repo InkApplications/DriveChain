@@ -1,6 +1,6 @@
 
 dependencies {
-    api 'com.squareup.okhttp3:okhttp:3.9.1'
-    api "com.google.dagger:dagger:$daggerVersion"
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 }
