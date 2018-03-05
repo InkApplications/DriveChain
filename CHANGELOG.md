@@ -1,6 +1,16 @@
 DriveChain Changelog
 ====================
 
+1.4.0
+-----
+
+DebugDrawer Bridges
+
+- `DebugDrawerBridgeModule` to bind `DeviceModule`, `BuildModule`, `NetworkModule`, and `SettingsModule` into the graph
+- `DebugDrawerLocationBridgeModule` to bind a `LocationModule` into the graph that depends on a `LocationRequest`
+- `DebugDrawerOkHttpBridgeModule` to bind `OkHttp3Module` and `NetworkQualityModule` into the graph
+- `DebugDrawerLogsBridgeModule` to bind `LogsModule` into the graph
+
 1.3.0
 -----
 

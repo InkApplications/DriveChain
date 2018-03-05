@@ -44,9 +44,11 @@ a bridge for DriveChain, the ones directly supported by this project include:
  - [Stetho Bridge]
  - [LeakCanary Bridge]
  - [Joda Bridge]
+ - [DebugDrawer Bridge]
 
 [Fresco Bridge]:/fresco-bridge
 [OkHTTP Bridge]:/okhttp-bridge
 [Stetho Bridge]:/stetho-bridge
 [LeakCanary Bridge]:/leakcanary-bridge
-[Joda Bridge]:/joda_bridge
+[Joda Bridge]:/joda-bridge
+[DebugDrawer Bridge]:/debugdrawer-bridge
