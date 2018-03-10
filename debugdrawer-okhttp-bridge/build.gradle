@@ -1,4 +1,10 @@
 
+android {
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
 dependencies {
     compile project(':debugdrawer-bridge')
     compile 'io.palaima.debugdrawer:debugdrawer-network-quality:0.8.0'
