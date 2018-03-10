@@ -1,0 +1,13 @@
+
+android {
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    compile 'io.palaima.debugdrawer:debugdrawer:0.8.0'
+    compile 'io.palaima.debugdrawer:debugdrawer-commons:0.8.0'
+    compile "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+}

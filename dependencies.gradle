@@ -3,5 +3,5 @@
  */
 ext.daggerVersion = "2.14.1"
 
-ext.kotlinVersion = '1.2.21'
+ext.kotlinVersion = '1.2.30'
 ext.gradleAndroidPluginVersion = '3.0.1'

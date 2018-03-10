@@ -1,0 +1,14 @@
+
+android {
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    compile project(':debugdrawer-bridge')
+    compile 'io.palaima.debugdrawer:debugdrawer-location:0.8.0'
+    compileOnly "com.google.android.gms:play-services-location:11.8.0"
+    compile "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+}

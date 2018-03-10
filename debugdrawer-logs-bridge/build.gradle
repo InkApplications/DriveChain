@@ -1,0 +1,16 @@
+
+android {
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    compile project(':debugdrawer-bridge')
+    compile 'io.palaima.debugdrawer:debugdrawer-logs:0.8.0'
+    compile 'com.github.pedrovgs:lynx:1.1.0'
+    debugCompile 'com.readystatesoftware.chuck:library:1.1.0'
+    releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.1.0'
+    compile "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+}

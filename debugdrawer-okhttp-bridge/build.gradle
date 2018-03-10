@@ -1,0 +1,15 @@
+
+android {
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    compile project(':debugdrawer-bridge')
+    compile 'io.palaima.debugdrawer:debugdrawer-network-quality:0.8.0'
+    compile 'io.palaima.debugdrawer:debugdrawer-okhttp3:0.8.0'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+}
