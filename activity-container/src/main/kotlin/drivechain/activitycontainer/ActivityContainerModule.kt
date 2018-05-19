@@ -1,6 +1,6 @@
 package drivechain.activitycontainer
 
-import android.arch.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleObserver
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet

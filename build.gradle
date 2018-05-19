@@ -1,19 +1,17 @@
 allprojects {
-    version='1.2-SNAPSHOT'
+    version='2.0-SNAPSHOT'
     group='com.github.InkApplications.DriveChain'
 }
 
 buildscript {
-    apply from: "$rootDir/dependencies.gradle"
-
     repositories {
         maven { url 'https://maven.google.com' }
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradleAndroidPluginVersion"
+        classpath "com.android.tools.build:gradle:3.2.0-alpha15"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.41"
     }
 }
 
@@ -23,14 +21,11 @@ subprojects {
     apply plugin: 'kotlin-android'
     apply plugin: 'kotlin-kapt'
 
-    apply from: "$rootDir/dependencies.gradle"
-
     android {
-        compileSdkVersion 26
-        buildToolsVersion "26.0.2"
+        compileSdkVersion "android-P"
 
         defaultConfig {
-            minSdkVersion 14
+            minSdkVersion 19
         }
         lintOptions {
             tasks.lint.enabled = false
@@ -48,7 +43,7 @@ subprojects {
     }
 
     dependencies {
-        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-        compile "com.android.support:appcompat-v7:26.1.0"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.+"
+        implementation "androidx.appcompat:appcompat:+"
     }
 }

@@ -1,6 +1,9 @@
 package drivechain.logger
 
-import android.arch.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 
 /**
  * Logs each step of the Activity Lifecycle as they happen.

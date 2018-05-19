@@ -1,5 +1,5 @@
 dependencies {
-    api 'com.squareup.leakcanary:leakcanary-android:1.+'
+    api 'net.danlew:android.joda:2.9.9.2'
     implementation "com.google.dagger:dagger:2.+"
     kapt "com.google.dagger:dagger-compiler:2.+"
     implementation project(":lifecycle")
