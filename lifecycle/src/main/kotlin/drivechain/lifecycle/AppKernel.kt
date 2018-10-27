@@ -1,6 +1,9 @@
 package drivechain.lifecycle
 
+import android.app.Activity
 import android.app.Application
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import drivechain.lifecycle.application.*
@@ -26,6 +29,19 @@ class AppKernel(
         it.onCreate(application)
     } action {
         lifecycleSubscribers.forEach { it.onCreate(application) }
+
+        application.registerActivityLifecycleCallbacks(object: Application.ActivityLifecycleCallbacks {
+            override fun onActivityPaused(activity: Activity) = Unit
+            override fun onActivityResumed(activity: Activity) = Unit
+            override fun onActivityStarted(activity: Activity) = Unit
+            override fun onActivityDestroyed(activity: Activity) = Unit
+            override fun onActivitySaveInstanceState(activity: Activity, p1: Bundle?) = Unit
+            override fun onActivityStopped(activity: Activity) = Unit
+            override fun onActivityCreated(activity: Activity, p1: Bundle?) {
+                activity as? AppCompatActivity ?: return
+                bindLifecycle(activity.lifecycle)
+            }
+        })
     }
 
     /**
