@@ -1,6 +1,13 @@
 allprojects {
     version='2.0-SNAPSHOT'
     group='com.github.InkApplications.DriveChain'
+
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
 }
 
 buildscript {
@@ -12,38 +19,5 @@ buildscript {
         classpath "com.android.tools.build:gradle:3.2.1"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.71"
-    }
-}
-
-subprojects {
-    apply plugin: 'com.github.dcendents.android-maven'
-    apply plugin: 'com.android.library'
-    apply plugin: 'kotlin-android'
-    apply plugin: 'kotlin-kapt'
-
-    android {
-        compileSdkVersion 28
-
-        defaultConfig {
-            minSdkVersion 19
-        }
-        lintOptions {
-            tasks.lint.enabled = false
-        }
-        sourceSets {
-            main.java.srcDirs += 'src/main/kotlin'
-        }
-    }
-
-    repositories {
-        mavenLocal()
-        google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-    }
-
-    dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.71"
-        implementation "androidx.appcompat:appcompat:1.+"
     }
 }

@@ -1,4 +1,8 @@
+apply from: "../android-library.gradle"
+
 dependencies {
     implementation "com.google.dagger:dagger:2.+"
     kapt "com.google.dagger:dagger-compiler:2.+"
+
+    api "androidx.lifecycle:lifecycle-common:2.+"
 }

@@ -1,3 +1,5 @@
+apply from: "../android-library.gradle"
+
 dependencies {
     implementation project(':app-config')
     implementation "com.google.dagger:dagger:2.+"
