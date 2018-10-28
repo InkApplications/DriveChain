@@ -16,8 +16,8 @@ private val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
  * @param loggerOffset The number of classes to traverse upwards when getting
  *        the name of the class that logged the message. This is used when
  *        nesting loggers together, so that the source of the log can be
- *        correctly identified. By default it is set to 2, expecting this to
- *        be used in a `LoggerCollection` (optional)
+ *        correctly identified. By default it is set to 1, and should be
+ *        changed to 2 if using this in a `CompositeLogger` (optional)
  * @param errorEnabled Whether Error Messages should be logged (default: true)
  * @param warnEnabled Whether Warning Messages should be logged (default: true)
  * @param infoEnabled Whether Info Messages should be logged (default: true)
@@ -32,50 +32,50 @@ class ConsoleLogger(
     private val infoEnabled: Boolean = true,
     private val debugEnabled: Boolean = true,
     private val traceEnabled: Boolean = true
-): Logger {
-    override fun debug(message: String, vararg args: Any?) {
+): TaggedLogger() {
+    override fun debugTag(tag: String?, message: String, vararg args: Any?) {
         if (!debugEnabled) return
-        Log.d(this.tag, String.format(message, *args))
+        Log.d(tag ?: classTag, String.format(message, *args))
     }
-    override fun debug(cause: Throwable, message: String, vararg args: Any?) {
+    override fun debugTag(tag: String?, cause: Throwable, message: String, vararg args: Any?) {
         if (!debugEnabled) return
-        Log.d(this.tag, String.format(message, *args), cause)
+        Log.d(tag ?: classTag, String.format(message, *args), cause)
     }
 
-    override fun error(message: String, vararg args: Any?) {
+    override fun errorTag(tag: String?, message: String, vararg args: Any?) {
         if (!errorEnabled) return
-        Log.e(this.tag, String.format(message, *args))
+        Log.e(tag ?: classTag, String.format(message, *args))
     }
-    override fun error(cause: Throwable, message: String, vararg args: Any?) {
+    override fun errorTag(tag: String?, cause: Throwable, message: String, vararg args: Any?) {
         if (!errorEnabled) return
-        Log.e(this.tag, String.format(message, *args), cause)
+        Log.e(tag ?: classTag, String.format(message, *args), cause)
     }
 
-    override fun info(message: String, vararg args: Any?) {
+    override fun infoTag(tag: String?, message: String, vararg args: Any?) {
         if (!infoEnabled) return
-        Log.i(this.tag, String.format(message, *args))
+        Log.i(tag ?: classTag, String.format(message, *args))
     }
-    override fun info(cause: Throwable, message: String, vararg args: Any?) {
+    override fun infoTag(tag: String?, cause: Throwable, message: String, vararg args: Any?) {
         if (!infoEnabled) return
-        Log.i(this.tag, String.format(message, *args), cause)
+        Log.i(tag ?: classTag, String.format(message, *args), cause)
     }
 
-    override fun trace(message: String, vararg args: Any?) {
+    override fun traceTag(tag: String?, message: String, vararg args: Any?) {
         if (!traceEnabled) return
-        Log.v(this.tag, String.format(message, *args))
+        Log.v(tag ?: classTag, String.format(message, *args))
     }
-    override fun trace(cause: Throwable, message: String, vararg args: Any?) {
+    override fun traceTag(tag: String?, cause: Throwable, message: String, vararg args: Any?) {
         if (!traceEnabled) return
-        Log.v(this.tag, String.format(message, *args), cause)
+        Log.v(tag ?: classTag, String.format(message, *args), cause)
     }
 
-    override fun warn(message: String, vararg args: Any?) {
+    override fun warnTag(tag: String?, message: String, vararg args: Any?) {
         if (!warnEnabled) return
-        Log.w(this.tag, String.format(message, *args))
+        Log.w(tag ?: classTag, String.format(message, *args))
     }
-    override fun warn(cause: Throwable, message: String, vararg args: Any?) {
+    override fun warnTag(tag: String?, cause: Throwable, message: String, vararg args: Any?) {
         if (!warnEnabled) return
-        Log.w(this.tag, String.format(message, *args), cause)
+        Log.w(tag ?: classTag, String.format(message, *args), cause)
     }
 
     /*
@@ -109,7 +109,7 @@ class ConsoleLogger(
 
     // DO NOT switch this to Thread.getCurrentThread().getStackTrace(). The test will pass
     // because Robolectric runs them on the JVM but on Android the elements are different.
-    private val tag: String get() {
+    private val classTag: String get() {
         if (null != this.name) {
             return this.name
         }

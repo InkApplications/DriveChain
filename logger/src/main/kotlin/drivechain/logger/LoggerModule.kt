@@ -1,11 +1,15 @@
 package drivechain.logger
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.multibindings.IntoSet
+import dagger.multibindings.Multibinds
 
-@Module class LoggerModule {
-    @Provides @IntoSet fun defaultLogger(): Logger = EmptyLogger()
-    @Provides fun loggers(loggers: Set<@JvmSuppressWildcards Logger>): Logger = LoggerCollection(loggers)
+typealias Loggers = Set<@JvmSuppressWildcards Logger>
+
+@Module(includes = [LoggerDefinitionModule::class]) class LoggerModule {
+    @Provides fun loggers(loggers: Loggers): Logger = CompositeLogger(loggers)
+}
+
+@Module internal abstract class LoggerDefinitionModule {
+    @Multibinds abstract fun loggerSet(): Loggers
 }
