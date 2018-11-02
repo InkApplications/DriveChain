@@ -2,6 +2,7 @@ rootProject.name = "drivechain"
 
 include 'bootstrap'
 include 'joda-bridge'
+include 'threeten-bridge'
 include 'android-services'
 include 'android-services-androidinjectors'
 include 'activity-container'
