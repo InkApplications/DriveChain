@@ -3,7 +3,6 @@ package drivechain.bootstrap
 import dagger.Module
 import drivechain.androidservices.AndroidApplicationModule
 import drivechain.androidservices.AndroidSystemServiceModule
-import drivechain.bridge.threeten.ThreeTenBridgeModule
 import drivechain.lifecycle.LifecycleModule
 import drivechain.logger.AutoLoggers
 
@@ -17,6 +16,5 @@ import drivechain.logger.AutoLoggers
     AutoLoggers::class,
     LifecycleModule::class,
     AndroidApplicationModule::class,
-    AndroidSystemServiceModule::class,
-    ThreeTenBridgeModule::class
+    AndroidSystemServiceModule::class
 ]) class BootstrapModule
