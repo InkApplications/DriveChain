@@ -11,6 +11,6 @@ import androidx.lifecycle.OnLifecycleEvent
 class LifecycleLogger(private val logger: Logger): LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
     fun onEvent(owner: LifecycleOwner, event: Lifecycle.Event) {
-        logger.info("Lifecycle: %s (%s)", event.name, owner.javaClass.simpleName)
+        logger.log(LogLevel.INFO, "Lifecycle Event: %s", event.name, tag = owner.javaClass.simpleName)
     }
 }

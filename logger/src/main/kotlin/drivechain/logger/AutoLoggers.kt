@@ -11,12 +11,11 @@ import drivechain.appconfig.AppConfig
 
     @Provides @IntoSet fun consoleLogger(config: AppConfig): Logger  {
         return if (config.debug) {
-            ConsoleLogger(loggerOffset = 3)
+            ConsoleLogger(loggerOffset = 2)
         } else {
             ConsoleLogger(
-                loggerOffset = 3,
-                debugEnabled = false,
-                traceEnabled = false
+                loggerOffset = 2,
+                logLevel = LogLevel.INFO
             )
         }
     }
