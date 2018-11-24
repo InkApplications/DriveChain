@@ -8,6 +8,10 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
     }
+
+    dependencyLocking {
+        lockAllConfigurations()
+    }
 }
 
 buildscript {
