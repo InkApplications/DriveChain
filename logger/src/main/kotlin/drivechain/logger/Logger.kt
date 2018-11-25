@@ -11,12 +11,12 @@ interface Logger {
     fun debug(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) =  log(LogLevel.DEBUG, cause, message, *args)
 
     fun info(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.INFO, message, *args)
-    fun info(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.INFO, message, *args)
+    fun info(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.INFO, cause, message, *args)
 
     fun warn(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.WARN, message, *args)
     fun warn(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.WARN, cause, message, *args)
 
     fun error(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.ERROR, message, *args)
-    fun error(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.ERROR, message, *args)
+    fun error(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.ERROR, cause, message, *args)
 }
 
