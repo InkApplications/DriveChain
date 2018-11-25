@@ -1,8 +1,8 @@
 package drivechain.androidservices
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
-import androidx.loader.app.LoaderManager
+import android.support.v4.app.LoaderManager
+import android.support.v7.app.AppCompatActivity
 import dagger.Module
 import dagger.Provides
 

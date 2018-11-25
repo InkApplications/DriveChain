@@ -2,10 +2,10 @@ package drivechain.lifecycle
 
 import android.app.Activity
 import android.app.Application
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
+import android.support.v7.app.AppCompatActivity
 import drivechain.lifecycle.application.*
 
 /**

@@ -1,8 +1,8 @@
 package com.acme.example
 
 import android.os.Bundle
-import androidx.annotation.CallSuper
-import androidx.appcompat.app.AppCompatActivity
+import android.support.annotation.CallSuper
+import android.support.v7.app.AppCompatActivity
 import com.acme.example.dependencyinjection.ActivityComponent
 import drivechain.androidservices.AndroidCompatActivityModule
 
@@ -12,7 +12,8 @@ abstract class BaseActivity: AppCompatActivity() {
         exampleApplication.component.createActivityComponent(AndroidCompatActivityModule(this))
     }
 
-    @CallSuper override fun onCreate(savedInstanceState: Bundle?) {
+    @CallSuper
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         component.injectBase(this)

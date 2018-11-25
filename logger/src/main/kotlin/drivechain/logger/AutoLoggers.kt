@@ -1,6 +1,6 @@
 package drivechain.logger
 
-import androidx.lifecycle.LifecycleObserver
+import android.arch.lifecycle.LifecycleObserver
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet

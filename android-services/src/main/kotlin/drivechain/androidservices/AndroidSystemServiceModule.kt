@@ -37,6 +37,10 @@ import android.nfc.NfcManager
 import android.os.*
 import android.os.health.SystemHealthManager
 import android.os.storage.StorageManager
+import android.support.annotation.RequiresApi
+import android.support.v4.app.NotificationManagerCompat
+import android.support.v4.hardware.display.DisplayManagerCompat
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat
 import android.telecom.TelecomManager
 import android.telephony.CarrierConfigManager
 import android.telephony.SubscriptionManager
@@ -48,10 +52,6 @@ import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textclassifier.TextClassificationManager
 import android.view.textservice.TextServicesManager
-import androidx.annotation.RequiresApi
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.hardware.display.DisplayManagerCompat
-import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
