@@ -2,7 +2,6 @@ package drivechain.lifecycle.application
 
 import android.app.Application
 
-
 /**
  * Base class for Subscribers used to initialize services in `onCreate`
  *

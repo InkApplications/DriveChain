@@ -1,6 +1,9 @@
-include ':joda_bridge'
+rootProject.name = "drivechain"
+
+include 'bootstrap'
+include 'joda-bridge'
 include 'android-services'
-include ':android-services-androidinjectors'
+include 'android-services-androidinjectors'
 include 'activity-container'
 include 'lifecycle'
 include 'logger'
@@ -10,4 +13,5 @@ include 'stetho-bridge'
 include 'stetho-bridge-noop'
 include 'leakcanary-bridge'
 include 'leakcanary-bridge-noop'
-include 'app-config'
+include 'app-info'
+include 'sample-project'

@@ -1,6 +1,7 @@
 package drivechain.androidservices
 
 import android.app.Activity
+import android.support.v4.app.LoaderManager
 import android.support.v7.app.AppCompatActivity
 import dagger.Module
 import dagger.Provides
@@ -23,5 +24,5 @@ import dagger.Provides
     @Provides @ActivityScope fun menuInflater() = activity.menuInflater
     @Provides @ActivityScope fun windowManager() = activity.windowManager
     @Provides @ActivityScope fun lifecycle() = activity.lifecycle
-    @Provides @ActivityScope fun supportLoaderManager() = activity.supportLoaderManager
+    @Provides @ActivityScope fun supportLoaderManager() = LoaderManager.getInstance(activity)
 }

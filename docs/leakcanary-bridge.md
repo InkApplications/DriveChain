@@ -15,8 +15,8 @@ Installation
 Add the dependency to your `build.gradle` file
 
 ```gradle
-    compileDebug "com.github.InkApplications.DriveChain:leakcanary-bridge:1.+"
-    compileRelease "com.github.InkApplications.DriveChain:leakcanary-bridge:1.+"
+    compileDebug "com.github.InkApplications.DriveChain:leakcanary-bridge:2.+"
+    compileRelease "com.github.InkApplications.DriveChain:leakcanary-bridge:2.+"
 ```
  
 Add the module to your application component:

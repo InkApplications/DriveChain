@@ -18,8 +18,8 @@ Installation
 Add the dependency to your `build.gradle` file
 
 ```gradle
-    debugCompile "com.github.InkApplications.DriveChain:stetho-bridge:1.+"
-    releaseCompile "com.github.InkApplications.DriveChain:stetho-bridge-noop:1.+"
+    debugCompile "com.github.InkApplications.DriveChain:stetho-bridge:2.+"
+    releaseCompile "com.github.InkApplications.DriveChain:stetho-bridge-noop:2.+"
 ```
 
 Add the module to your application component:

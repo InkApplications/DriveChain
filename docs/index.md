@@ -26,7 +26,7 @@ using a Library.
 How Does it Work?
 -----------------
 
-DriveChain leverages Dagger2's `@IntoSet` modifier to create dynamic 
+DriveChain leverages Dagger2's Multibinds to create dynamic 
 collections of dependencies and connect them to the Application's events.
 This works like an event bus, allowing Libraries to automatically listen
 to events in your application without the need to explicitly call anything.

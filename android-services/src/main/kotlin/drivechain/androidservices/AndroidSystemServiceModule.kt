@@ -1,6 +1,7 @@
 package drivechain.androidservices
 
 import android.accounts.AccountManager
+import android.annotation.TargetApi
 import android.app.*
 import android.app.admin.DevicePolicyManager
 import android.app.job.JobScheduler
@@ -36,7 +37,6 @@ import android.nfc.NfcManager
 import android.os.*
 import android.os.health.SystemHealthManager
 import android.os.storage.StorageManager
-import android.service.wallpaper.WallpaperService
 import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationManagerCompat
 import android.support.v4.hardware.display.DisplayManagerCompat
@@ -120,7 +120,7 @@ import javax.inject.Singleton
     @Provides @Singleton fun usb() = context.getSystemService(Context.USB_SERVICE) as UsbManager
     @RequiresApi(17) @Provides @Singleton fun userManager() = context.getSystemService(Context.USER_SERVICE) as UserManager?
     @Provides @Singleton fun vibrator() = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-    @Provides @Singleton fun wallpaper() = context.getSystemService(Context.WALLPAPER_SERVICE) as WallpaperService
+    @Provides @Singleton fun wallpaper() = context.getSystemService(Context.WALLPAPER_SERVICE) as WallpaperManager?
     @RequiresApi(26) @Provides @Singleton fun wifiAware() = context.getSystemService(Context.WIFI_AWARE_SERVICE) as WifiAwareManager?
     @Provides @Singleton fun wifiP2p() = context.getSystemService(Context.WIFI_P2P_SERVICE) as WifiP2pManager
     @Provides @Singleton fun wifi() = context.getSystemService(Context.WIFI_SERVICE) as WifiManager

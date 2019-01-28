@@ -1,18 +1,22 @@
 package drivechain.logger
 
 interface Logger {
-    fun debug(message: String, vararg args: Any? = emptyArray())
-    fun debug(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray())
+    fun log(level: LogLevel, message: String, vararg args: Any? = emptyArray(), tag: String? = null)
+    fun log(level: LogLevel, cause: Throwable, message: String, vararg args: Any? = emptyArray(), tag: String? = null)
 
-    fun error(message: String, vararg args: Any? = emptyArray())
-    fun error(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray())
+    fun trace(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.TRACE, message, *args)
+    fun trace(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.TRACE, cause, message, *args)
 
-    fun info(message: String, vararg args: Any? = emptyArray())
-    fun info(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray())
+    fun debug(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.DEBUG, message, *args)
+    fun debug(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) =  log(LogLevel.DEBUG, cause, message, *args)
 
-    fun trace(message: String, vararg args: Any? = emptyArray())
-    fun trace(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray())
+    fun info(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.INFO, message, *args)
+    fun info(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.INFO, cause, message, *args)
 
-    fun warn(message: String, vararg args: Any? = emptyArray())
-    fun warn(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray())
+    fun warn(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.WARN, message, *args)
+    fun warn(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.WARN, cause, message, *args)
+
+    fun error(message: String, vararg args: Any? = emptyArray()) = log(LogLevel.ERROR, message, *args)
+    fun error(cause: Throwable, message: String = cause.message.orEmpty(), vararg args: Any? = emptyArray()) = log(LogLevel.ERROR, cause, message, *args)
 }
+

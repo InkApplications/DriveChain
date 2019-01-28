@@ -14,7 +14,7 @@ Installation
 Add the dependency to your `build.gradle` file
 
 ```gradle
-    compile "com.github.InkApplications.DriveChain:joda-bridge:1.+"
+    compile "com.github.InkApplications.DriveChain:joda-bridge:2.+"
 ```
  
 Add the module to your application component:
