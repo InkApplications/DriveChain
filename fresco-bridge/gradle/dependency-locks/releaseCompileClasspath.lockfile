@@ -39,7 +39,7 @@ com.facebook.fresco:imagepipeline-okhttp3:1.11.0
 com.facebook.fresco:imagepipeline:1.11.0
 com.facebook.fresco:nativeimagefilters:1.11.0
 com.facebook.soloader:soloader:0.5.1
-com.google.dagger:dagger:2.19
+com.google.dagger:dagger:2.21
 com.parse.bolts:bolts-tasks:1.4.0
 com.squareup.okhttp3:okhttp:3.11.0
 com.squareup.okio:okio:1.14.0
