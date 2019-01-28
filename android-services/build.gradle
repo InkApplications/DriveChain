@@ -1,6 +1,7 @@
 apply from: "../android-library.gradle"
 
 dependencies {
+    api project(":app-config")
     implementation "com.google.dagger:dagger:2.+"
     kapt "com.google.dagger:dagger-compiler:2.+"
 }
