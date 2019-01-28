@@ -49,4 +49,4 @@ You can see an example and/or base template in our [Sample Application]
 
 [Manual App Setup Guide]:/manual-app-setup
 [Quick App Setup Guide]:/quick-app-setup
-[Sample Application]:../sample-project
+[Sample Application]:https://github.com/InkApplications/DriveChain/tree/master/sample-project
