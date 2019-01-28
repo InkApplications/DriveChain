@@ -28,7 +28,7 @@ Core components include:
 [Activity Container]:/activity-container
 [Android Services]:/android-services
 [Android Services for AndroidInjectors]:/android-services-androidinjectors
-[App Config]:/app-config
+[App Info]:/app-info
 [Lifecycle]:/lifecycle
 [Logger]:/logger
 
