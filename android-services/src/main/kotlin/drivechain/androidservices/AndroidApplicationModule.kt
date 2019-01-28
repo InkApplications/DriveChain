@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import drivechain.appconfig.AppConfig
+import drivechain.appconfig.AppInfo
 import javax.inject.Singleton
 
 /**
@@ -15,7 +15,7 @@ import javax.inject.Singleton
  * application class directly.
  */
 @Module class AndroidApplicationModule(private val application: Application) {
-    @Provides @Singleton fun genericSharedPreferences(config: AppConfig): SharedPreferences {
+    @Provides @Singleton fun genericSharedPreferences(config: AppInfo): SharedPreferences {
         return application.getSharedPreferences(config.appId, Context.MODE_PRIVATE)
     }
     @Provides @Singleton fun application() = application

@@ -5,10 +5,11 @@ import com.acme.example.examples.ExamplesModule
 import dagger.Component
 import drivechain.androidservices.AndroidCompatActivityModule
 import drivechain.bootstrap.BootstrapModule
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [
     BootstrapModule::class,
-    AppConfigModule::class,
     ExamplesModule::class
 ])
 interface ApplicationComponent {

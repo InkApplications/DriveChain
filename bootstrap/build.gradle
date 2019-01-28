@@ -3,7 +3,7 @@ apply from: "../android-library.gradle"
 dependencies {
     api project(':lifecycle')
     api project(':logger')
-    api project(':app-config')
+    api project(':app-info')
     api project(':android-services')
 
     implementation "com.google.dagger:dagger:2.+"
