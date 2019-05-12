@@ -31,7 +31,7 @@ com.android.support:support-vector-drawable:28.0.0
 com.android.support:swiperefreshlayout:28.0.0
 com.android.support:versionedparcelable:28.0.0
 com.android.support:viewpager:28.0.0
-com.google.dagger:dagger:2.21
+com.google.dagger:dagger:2.22.1
 com.squareup.haha:haha:2.0.4
 com.squareup.leakcanary:leakcanary-analyzer:1.6.3
 com.squareup.leakcanary:leakcanary-android:1.6.3
